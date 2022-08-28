@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import styles from "./AddStudent.module.css";
+import Router, { useRouter } from "next/router";
 
 const addNewStudent = () => {
     const [name, setName] = useState('');
@@ -9,8 +10,12 @@ const addNewStudent = () => {
     const [matricule, setMatricule] = useState('');
     const [year, setYear] = useState('');
     const [resultUrl, setResultUrl] = useState('');
-    const [successs, setSuccess] = useState(false);
+    const [successs, setSuccess] = useState(false); 
+    const router = useRouter();
 
+    const routeBack = () => {
+        router.push('/');
+    }
     const addNewResult = (e: any) => {
         e.preventDefault();
         try {
@@ -75,8 +80,8 @@ const addNewStudent = () => {
                     </div>
                     <br />
                     <button onClick={addNewResult} className={styles.btnUpload}>Add Result</button>
-                    <button className={styles.btnBack}>
-                        <a className={styles.backBtn} href="">Back</a>
+                    <button className={styles.btnBack} onClick={routeBack} >
+                        Back
                     </button>
                 </form>
             </div>

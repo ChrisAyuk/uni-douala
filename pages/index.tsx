@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
 import axios from 'axios';
 import { useState } from 'react';
+import Router, { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
 
@@ -15,7 +16,12 @@ const Home: NextPage = () => {
   const [resultDep, setResultDep] = useState();
   const [resultY, setResultY] = useState();
   const [resultS, setResultS] = useState();
+  const router = useRouter();
 
+  const newStudent = () => {
+    router.push('/add-student');
+
+  }
   const getResultData = () => {
     console.log('info below');
     console.log(year);
@@ -48,6 +54,9 @@ const Home: NextPage = () => {
   return (
    <div className={styles.container}>
      <h1 className={styles.title}>Get Students Result</h1>
+     <div className="newStudent">
+        <button className={styles.searchBtn} onClick={newStudent}>Add Student</button>
+     </div>
      <div className={styles.search}>
        <input className={styles.date} value={year} onChange={(e) => setYear(e.target.value)} type="text" placeholder="Year"/>
        <select className={styles.select} onChange={(e) => setSemester(e.target.value)}>

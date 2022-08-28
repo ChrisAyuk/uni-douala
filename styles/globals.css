@@ -89,6 +89,12 @@ body {
   color: #fff;
 }
 
+.newStudent {
+  width: 60%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 540px) {
   .login{
     width: 70%;
