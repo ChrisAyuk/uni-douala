@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import axios from 'axios';
 
 const Home: NextPage = () => {
-  
+
   const getResultData = () => {
     var config = {
       method: 'get',
