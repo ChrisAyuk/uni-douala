@@ -10,9 +10,10 @@ const addNewStudent = () => {
     const [year, setYear] = useState('');
     const [resultUrl, setResultUrl] = useState('');
 
-    const addNewResult = () => {
+    const addNewResult = (e: any) => {
+        e.preventDefault();
         try {
-            let reqData = {"name": name, "department": department, "semester": semester, "matricule": matricule, "year": year, "resultUrl": resultUrl};
+            let reqData = {"name": name, "department": department, "semester": semester, "matricule": matricule, "year": year, "result": resultUrl};
             
             var config = {
                 method: 'post',
@@ -41,21 +42,25 @@ const addNewStudent = () => {
                 <h1 className={styles.title}>Upload Result Slip</h1>
                 <form action="" className={styles.form}>
                     <div>
-                        <input className={styles.nameCont} type="text" placeholder="Name" />
+                        <input value={name} onChange={(e) => setName(e.target.value)} className={styles.nameCont} type="text" placeholder="Name" />
                     </div>
                     <div>
-                        <input className={styles.nameCont} type="text" placeholder="Department" />
+                        <input  value={department} onChange={(e) => setDepartment(e.target.value)} className={styles.nameCont} type="text" placeholder="Department" />
                     </div>
                     <div>
-                        <input className={styles.nameCont} type="date" placeholder="Year" />
+                        <input  value={year} onChange={(e) => setYear(e.target.value)} className={styles.nameCont} type="text" placeholder="Year" />
                     </div>
                     <div>
-                        <input className={styles.nameCont} type="text" placeholder="Semester" />
+                        <input  value={semester} onChange={(e) => setSemester(e.target.value)} className={styles.nameCont} type="text" placeholder="Semester" />
                     </div>
                     <div>
-                        <input className={styles.nameCont} type="text" placeholder="Matricul" />
-                    </div><br />
-                    <button className={styles.btnUpload}><a className={styles.upload} href="">Upload</a></button>
+                        <input  value={matricule} onChange={(e) => setMatricule(e.target.value)} className={styles.nameCont} type="text" placeholder="Matricule" />
+                    </div>
+                    <div>
+                        <input  value={resultUrl} onChange={(e) => setResultUrl(e.target.value)} className={styles.nameCont} type="text" placeholder="Result Doc" />
+                    </div>
+                    <br />
+                    <button onClick={addNewResult} className={styles.btnUpload}>Add Result</button>
                     <button className={styles.btnBack}>
                         <a className={styles.backBtn} href="">Back</a>
                     </button>

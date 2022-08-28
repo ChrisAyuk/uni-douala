@@ -43,7 +43,8 @@
 
 .btnUpload{
     margin: 0;
-    width: 90px;
+    /* width: 90px; */
+    padding: 5px 10px;
     height: 40px;
     color: #fff;
     background-color: #29A37A;
