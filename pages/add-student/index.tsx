@@ -9,6 +9,7 @@ const addNewStudent = () => {
     const [matricule, setMatricule] = useState('');
     const [year, setYear] = useState('');
     const [resultUrl, setResultUrl] = useState('');
+    const [successs, setSuccess] = useState(false);
 
     const addNewResult = (e: any) => {
         e.preventDefault();
@@ -27,6 +28,16 @@ const addNewStudent = () => {
             axios(config).then((res:any) => {
                 console.log(res);
                 console.log("result added");
+                setName('');
+                setDepartment('');
+                setMatricule('');
+                setResultUrl('');
+                setYear('');
+                setSemester('');
+                setSuccess(true);
+                setTimeout(() => {
+                    setSuccess(false);
+                },3000)
             }).catch(err => {
                 console.log("There was an error adding result")
                 console.log(err);
@@ -40,7 +51,10 @@ const addNewStudent = () => {
             
             <div className={styles.formContainer}>
                 <h1 className={styles.title}>Upload Result Slip</h1>
-                <form action="" className={styles.form}>
+               { successs &&  <div className="success">
+                    Added Stuent Result
+                </div>}
+                <form className={styles.form}>
                     <div>
                         <input value={name} onChange={(e) => setName(e.target.value)} className={styles.nameCont} type="text" placeholder="Name" />
                     </div>
